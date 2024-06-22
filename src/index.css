@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trafficstop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  gap: 20px;
+  width: 70px;
+  height: 250px;
+  background-color: black;
+}
+
+.light {
+  --size: 50px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  background-color: darkgray;
+}
