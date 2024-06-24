@@ -1,15 +1,13 @@
 import React from 'react';
 import Light from './Light';
 
-type LightSettingKey = 'red' | 'yellow' | 'green';
-
 interface LightSetting {
   color: string;
   duration: number;
-  nextColor: LightSettingKey;
+  nextColor: string;
 }
 
-const LightSettings: { [key in LightSettingKey]: LightSetting } = {
+const LIGHTSETTINGS: { [key: string]: LightSetting } = {
   red: {
     color: 'red',
     duration: 4000,
@@ -28,10 +26,10 @@ const LightSettings: { [key in LightSettingKey]: LightSetting } = {
 };
 
 function TrafficLight() {
-  const [currentColor, setCurrentColor] = React.useState<LightSettingKey>('green');
+  const [currentColor, setCurrentColor] = React.useState<string>('green');
 
   React.useEffect(() => {
-    const { duration, nextColor } = LightSettings[currentColor];
+    const { duration, nextColor } = LIGHTSETTINGS[currentColor];
     const timerId = setTimeout(() => {
       setCurrentColor(nextColor);
     }, duration);
@@ -43,11 +41,11 @@ function TrafficLight() {
 
   return (
     <div className='trafficstop'>
-      {Object.keys(LightSettings).map((color) => (
+      {Object.keys(LIGHTSETTINGS).map((color) => (
         <Light
           style={{
             backgroundColor:
-              color === currentColor ? LightSettings[currentColor].color : 'darkgray',
+              color === currentColor ? LIGHTSETTINGS[currentColor].color : 'darkgray',
           }}
         />
       ))}
